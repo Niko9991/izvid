@@ -1,0 +1,9 @@
+
+<h1>Home#razlaga</h1>
+<p>Find me in app/views/home/razlaga.html.erb</p>
+
+<%= link_to "index", home_index_path, class: "button button2 text-xs"%>
+
+<%= button_to "Sign Out", session_path, class: "button button1 text-sm", method: :delete if authenticated? %>
+
+<%= current_user.id %>

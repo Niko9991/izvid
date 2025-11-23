@@ -1,0 +1,32 @@
+
+
+.container1 {
+display: grid;
+grid-template-columns: auto auto auto auto;
+background-color: dodgerblue;
+padding: 5px;
+gap: 5px;
+justify-content: space-evenly;
+}
+.container2 {
+display: grid;
+grid-template-columns: auto auto auto auto;
+background-color: rgb(189, 210, 231);
+padding: 5px;
+gap: 5px;
+justify-content: space-evenly;
+}
+.container1 div {
+background-color: #62a5e0;
+color:#000;
+padding: 10px;
+font-size: 20px;
+text-align: center;
+}
+.container2 div {
+background-color: #2a8b97;
+color:#000;
+padding: 10px;
+font-size: 10px;
+text-align: left;
+}

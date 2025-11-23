@@ -1,0 +1,23 @@
+<h1>Supplier Report</h1>
+
+<p><strong>Total suppliers:</strong> <%= @suppliers.count %></p>
+
+<table border="1" style="margin-top: 1em;">
+  <tr>
+    <th>Supplier</th>
+    <th>Lab Tests</th>
+    <th>Certificates</th>
+  </tr>
+
+  <% @suppliers.each do |supplier| %>
+    <tr>
+      <td><%= supplier.name %></td>
+      <td><%= supplier.papers.where.not(labtest: [nil, ""]).count %></td>
+      <td><%= supplier.papers.where.not(certificate: [nil, ""]).count %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to "Download CSV report", reports_supplier_report_path(format: :csv), class: "button" %>
+</p>

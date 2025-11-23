@@ -1,0 +1,75 @@
+<%= form_with(model: paper) do |form| %>
+  <% if paper.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(paper.errors.count, "error") %> prohibited this paper from being saved:</h2>
+
+      <ul>
+        <% paper.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <h2>helper paper</h2>
+
+<div id="<%= dom_id paper %>">
+  
+  <p>
+    <strong>Supplier:</strong>
+    <%= paper.supplier_id %>
+    <%= paper.supplier&.name || "No supplier" %>
+  </p>
+
+  <p>
+    <strong>Year:</strong>
+    <%= paper.year %>
+  </p>
+
+ <div class = "container1">
+   <div>
+    <%= form.label :article%>
+    <%= form.text_field :article %>
+   </div>
+
+   <div>
+    <%= form.label :group %>
+    <%= form.number_field :group %>
+   </div>
+
+    <div>
+     <%= form.label :comment%>
+     <%= form.text_area :comment %>
+    </div>
+
+  </div>
+
+
+
+  <div class="container2">
+    <div>
+      <%= form.label :labtest%>
+      <%= form.text_field :labtest %>
+    </div>
+
+    <div>
+      <%= form.label :location_labtest%>
+      <%= form.text_field :location_labtest %>
+    </div>
+
+    <div>
+    <%= form.label :certificate%>>
+    <%= form.text_field :certificate %>
+    </div>
+
+    <div>
+    <%= form.label :location_certificate %>
+    <%= form.text_field :location_certificate %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+</div>
+<% end %>

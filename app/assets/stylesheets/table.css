@@ -1,0 +1,28 @@
+/* TABLE STYLES */
+
+table, th, td {
+border: 1px solid blue;
+}
+
+table {
+width: 50%;
+border-collapse: collapse;
+margin-top: 10px;
+margin-left: 100px;
+}
+
+th {
+height: 20px;
+padding: 4px 0;
+background-color: #112270;
+color: white;
+}
+
+td {
+padding: 4px 6px;
+}
+
+tr:nth-child(even) {
+background-color: #0b8047;
+color: white;
+}

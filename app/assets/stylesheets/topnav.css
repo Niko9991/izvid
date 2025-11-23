@@ -1,0 +1,25 @@
+/* TOP NAVIGATION BAR */
+
+.topnav {
+display: flex;
+overflow: hidden;
+background-color: #333;
+padding: 14px 16px;
+font-size: 17px;
+}
+
+.topnav a {
+color: #f6f4f5;
+text-align: left;
+padding: 14px 16px;
+}
+
+.topnav a:hover {
+background-color: #ddd;
+color: #9c6d33;
+}
+
+.topnav .active {
+background-color: #04AA6D;
+color: white;
+}

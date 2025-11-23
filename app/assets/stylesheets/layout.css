@@ -1,0 +1,23 @@
+/* GENERAL LAYOUT */
+
+body {
+background-color: rgb(152, 153, 153);
+}
+
+h1 {
+color: rgb(4, 16, 68);
+text-align: left;
+}
+
+h2 {
+color: rgb(32, 26, 22);
+font-size: medium;
+}
+
+article {
+background-color: lightgrey;
+width: 300px;
+border: 15px solid green;
+padding: 50px;
+margin: 20px;
+}

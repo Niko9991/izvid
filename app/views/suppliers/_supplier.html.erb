@@ -1,0 +1,26 @@
+<div id="<%= dom_id supplier %>">
+  
+ <h2> form supplier</h2>
+  
+  <p>
+    <strong>Name:</strong>
+    <%= supplier.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= supplier.description %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= supplier.email %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= supplier.user_id %>
+  </p>
+
+</div>
+<%= link_to "Papers", papers_path, class: "button button2 text-sm" %>

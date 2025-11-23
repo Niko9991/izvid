@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>show supplier</h1>
+
+<%= render @supplier %>
+
+<h2>Papers for this supplier</h2>
+<% if @paper %>
+<% @papers.each do |paper| %>
+  <p>
+    <%= paper.article %> - <%= paper.year %> (Supplier: <%= paper.supplier.name %>)
+  </p>
+<% end %>
+<% else %>
+<%= link_to "Add document", new_paper_path(supplier_id: @supplier.id) %>
+<% end %>
+
+
+
+
+<div>
+  <%= link_to "Edit this supplier", edit_supplier_path(@supplier) %> |
+  <%= link_to "Back to suppliers", suppliers_path %>
+
+  <%= button_to "Destroy this supplier", @supplier, method: :delete %>
+
+</div>

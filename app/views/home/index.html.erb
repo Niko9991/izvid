@@ -1,0 +1,11 @@
+<h1>Index home</h1>
+
+
+<%= link_to "razlaga", home_razlaga_path, class: "button button2 text-sm" %>
+
+<%= link_to "Suppliers", suppliers_path, class: "button button2 text-sm" %>
+
+
+
+<%= button_to "Sign Out", session_path,class: "button button1 text-sm", method: :delete if authenticated? %>
+<%= current_user.id %>
