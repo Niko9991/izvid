@@ -1,0 +1,14 @@
+ <tr id="<%= dom_id(paper) %>">
+  <td><%= paper.year %></td>
+  <td><%= l(paper.created_at) %></td>
+  <td><%= paper.article %></td>
+  <td><%= paper.labtest %></td>
+  <td><%= paper.location_labtest %></td>
+  <td><%= paper.certificate %></td>
+  <td><%= paper.location_certificate %></td>
+
+  <td>
+    <%= link_to "Show", supplier_paper_path(@supplier, paper) %> |
+    <%= link_to "Edit", edit_supplier_paper_path(@supplier, paper) %>
+  </td>
+</tr>

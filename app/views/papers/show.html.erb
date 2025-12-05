@@ -1,10 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<h1>Paper: <%= @paper.article.presence || "Untitled" %></h1>
 
-<%= render @paper %>
+<p><strong>Supplier:</strong> <%= link_to @supplier.name, supplier_path(@supplier) %></p>
+<p><strong>Year:</strong> <%= @paper.year %></p>
+<p><strong>Article:</strong> <%= @paper.article %></p>
+<p><strong>Group:</strong> <%= @paper.group %></p>
+<p><strong>Lab test:</strong> <%= @paper.labtest %></p>
+<p><strong>Certificate:</strong> <%= @paper.certificate %></p>
+<p><strong>Comment:</strong> <%= simple_format(@paper.comment) %></p>
 
-<div>
-  <%= link_to "Edit this paper", edit_paper_path(@paper) %> |
-  <%= link_to "Back to papers", papers_path %>
-
-  <%= button_to "Destroy this paper", @paper, method: :delete %>
+<div style="margin-top: 1em;">
+  <%= link_to "Edit", edit_supplier_paper_path(@supplier, @paper), class: "button" %>
+  <%= link_to "Back to papers", supplier_papers_path(@supplier), class: "button" %>
+  <%= button_to "Destroy this paper", @papper, method: :delete %>
 </div>

@@ -1,0 +1,30 @@
+ <h1>Porocilo</h1>
+
+<p><strong><%= ("Stevilo dobaviteljev:") %></strong> <%= @suppliers.count %></p>
+
+<p><strong>Total Lab Tests:</strong> <%= @total_labtests %></p>
+<p><strong>Total Certificates:</strong> <%= @total_certificates %></p>
+<!-- CSV Download Link -->
+<p>
+  <%= link_to "Shrani pregled (csv)", reports_supplier_report_path(format: :csv), class: "btn btn-primary" %>
+</p>
+
+<table class = "table 2" >
+  <tr>
+    <th>Dobavitelj</th>
+    <th>Izvidi</th>
+    <th>Certifikati</th>
+    
+
+  </tr>
+
+  <% @suppliers.each do |supplier| %>
+    <tr>
+      <td style ="width: 50% "><%= supplier.name %></td>
+      <td style ="width: 25% "><%= supplier.papers.where(labtest: true).count %></td>
+      <td><%= supplier.papers.where(certificate: true).count %></td>
+    </tr>
+  <% end %>
+</table>
+
+ 

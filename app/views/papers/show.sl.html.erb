@@ -1,0 +1,15 @@
+<h1>Dokument: <%= @paper.article.presence || "Untitled" %></h1>
+<article>
+<p><strong>Dobavitelj:</strong> <%= link_to @supplier.name, supplier_path(@supplier) %></p>
+<p><strong>Leto:</strong> <%= @paper.year %></p>
+<p><strong>Artikel:</strong> <%= @paper.article %></p>
+<p><strong>Skupina:</strong> <%= @paper.group %></p>
+<p><strong>Lab test:</strong> <%= @paper.labtest %></p>
+<p><strong>Certifikat:</strong> <%= @paper.certificate %></p>
+<p><strong>Opomba:</strong> <%= simple_format(@paper.comment) %></p>
+</article>
+
+<div style="margin-top: 1em;">
+  <%= link_to "Uredi ta dokument", edit_supplier_paper_path(@supplier, @paper), class: "button" %>
+  <%= link_to "Nazaj v seznam dokumentov", supplier_papers_path(@supplier), class: "button" %>
+</div>

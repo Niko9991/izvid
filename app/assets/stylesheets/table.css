@@ -4,7 +4,7 @@ table, th, td {
 border: 1px solid blue;
 }
 
-table {
+.table1 {
 width: 50%;
 border-collapse: collapse;
 margin-top: 10px;
@@ -25,4 +25,39 @@ padding: 4px 6px;
 tr:nth-child(even) {
 background-color: #0b8047;
 color: white;
+}
+.table2 {
+width: 50%;
+border-collapse: collapse;
+margin-top: 10px;
+margin-left: 100px;
+}
+
+th {
+height: 20px;
+padding: 4px 0;
+background-color: #9899a1;
+color: rgb(5, 5, 5);
+}
+
+td {
+padding: 4px 6px;
+}
+
+.table3
+width: 80%;
+border-collapse: collapse;
+margin-top: 10px;
+margin-left: 100px;
+}
+
+th {
+height: 20px;
+padding: 4px 0;
+background-color: #323d8f;
+color: rgb(5, 5, 5);
+}
+
+td {
+padding-left: 30px;
 }

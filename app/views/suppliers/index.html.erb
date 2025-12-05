@@ -2,16 +2,46 @@
 
 <% content_for :title, "Suppliers" %>
 
-<h1>Suppliers index html</h1>
+
+<h1>Suppliers index html)</h1>
+<%= t(:suppliers) %>
+
+<%= form_with url: suppliers_path, method: :get, local: true do |form| %>
+  <%= form.label :search, "Search suppliers:" %>
+  <%= form.text_field :search, value: params[:search], placeholder:"Enter name..." %>
+  <%= form.submit "Search" %>
+<% end %>
+
+
+
+
 
 <div id="suppliers">
+
+  <table style="width: 80%;">
+<caption>Suppliers</caption>
+  <thead>
+  <th><strong>Name</strong></th>
+  <th><strong>Description:</strong></th>
+  <th><strong>Email:</strong></th>
+  <th><strong>User:</strong></th>
+  <th><strong>Documents:</strong></th>
+  <th><strong>Show supplier)</strong></th>
+  </thead>
+  <tbody>
   <% @suppliers.each do |supplier| %>
-    <%= render supplier %>
-    <p>
-      <%= link_to "Show this supplier", supplier %>
-    </p>
+  
+ 
+  <td><%= supplier.name %></td>
+  <td><%= supplier.description %></td>
+  <td><%= supplier.email %></td>
+  <td><%= supplier.user_id %></td>
+  <td><%= link_to "Papers", supplier_papers_path(supplier)  %></td>
+  <td> <%= link_to "Show this supplier", supplier %></td>
+ </tbody>    
   <% end %>
+  </table>
 </div>
 
-<%= link_to "New supplier", new_supplier_path %>
+<%= link_to "New supplier", new_supplier_path, class: "button button1 text-sm" %>
 

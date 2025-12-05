@@ -1,0 +1,4 @@
+<h1>Noc dokument za <%= @supplier.name %></h1>
+<%= render "form", supplier: @supplier, paper: @paper %>
+
+<%= link_to "Nazaj dokumentis", supplier_papers_path(@supplier), class: "button" %>

@@ -1,7 +1,12 @@
-<div class = "topnav" >
-<%= link_to "home", home_index_path %> 
-<%= link_to "Razlaga", home_razlaga_path%>
-<%= link_to "Suppliers", suppliers_path %>
-<%= link_to "Documents", papers_path %>
-<%= link_to "Reports", reports_supplier_report_path%>
+<div class="topnav">
+  <%= link_to t("home"), home_index_path %>
+  <%= link_to t("razlaga"), home_razlaga_path %>
+  <%= link_to t("suppliers"), suppliers_path %>
+  <%= link_to t("reports"), reports_supplier_report_path %>
+
+  <!-- Language switcher -->
+  <span style="float: right;">
+    <%= link_to "EN", url_for(locale: :en) %> |
+    <%= link_to "SL", url_for(locale: :sl) %>
+  </span>
 </div>

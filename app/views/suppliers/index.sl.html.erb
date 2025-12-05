@@ -1,0 +1,47 @@
+ <p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Suppliers" %>
+
+
+<h1>Dobavitelji index html)</h1>
+<%= t(:suppliers) %>
+
+<%= form_with url: suppliers_path, method: :get, local: true do |form| %>
+  <%= form.label :search, "Poisci dobavitelja:" %>
+  <%= form.text_field :search, value: params[:search], placeholder:"Vpisi ime ..." %>
+  <%= form.submit "Najdi" %>
+<% end %>
+
+
+
+
+
+<div id="suppliers">
+
+  <table style="width: 80%;">
+<caption>Dobavitelji</caption>
+  <thead>
+  <th><strong>Ime:</strong></th>
+  <th><strong>Opis:</strong></th>
+  <th><strong>Email:</strong></th>
+  <th><strong>Uporabmik:</strong></th>
+  <th><strong>Dokumenti:</strong></th>
+  <th><strong>Pokazi dobavitelja</strong></th>
+  </thead>
+  <tbody>
+  <% @suppliers.each do |supplier| %>
+  
+ 
+  <td><%= supplier.name %></td>
+  <td><%= supplier.description %></td>
+  <td><%= supplier.email %></td>
+  <td><%= supplier.user_id %></td>
+  <td><%= link_to "Dokumenti", supplier_papers_path(supplier)  %></td>
+  <td> <%= link_to "Izberi", supplier %></td>
+ </tbody>    
+  <% end %>
+  </table>
+</div>
+
+<%= link_to "Nov dobavitelj", new_supplier_path, class: "button button1 text-sm" %>
+

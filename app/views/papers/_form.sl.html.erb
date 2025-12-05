@@ -10,15 +10,15 @@
     </div>
   <% end %>
 <table class="table2">
-  <caption>Edit paper</caption>
+  <caption>Dokument</caption>
   <thead>
-    <th><%= f.label :article %></th>
-    <th><%= f.label :year %></th>
-    <th><%= f.label :group %></th>
+    <th><%= f.label :artikel %></th>
+    <th><%= f.label :leto %></th>
+    <th><%= f.label :skupina%></th>
   </thead>
   <tbody>
     <td><%= f.text_field :article %></td>
-    <td><%= f.number_field :year, placeholder: "2025" %></td>
+    <td><%= f.number_field :year, placeholder:2026 %></td>
     <td><%= f.text_field :group %></td>
   </tbody>
 </table>
@@ -34,20 +34,21 @@
     <%= f.label :certificate %><br>
     <%= f.check_box :certificate %>
     
+   
   </div>
-
+ 
   <div >
     <%= f.label :location_labtest %><br>
     <%= f.text_field :location_labtest %>
   </div>
 
   <div>
-    <%= f.label :location_certificate %><br>
+    <%= f.label :location_certificate%><br>
     <%= f.text_field :location_certificate %>
   </div>
 
   <div>
-    <%= f.label :comment %><br>
+    <%= f.label :opomba %><br>
     <%= f.text_area :comment %>
   </div>
 

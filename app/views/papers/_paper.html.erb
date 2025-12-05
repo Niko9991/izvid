@@ -1,62 +1,16 @@
 <h2>helper paper</h2>
 
-<div id="<%= dom_id paper %>">
-  
-  <p>
-    <strong>Supplier:</strong>
-    <%= paper.supplier_id %>
-     <%= paper.supplier.name %>
-  </p>
+<div id="<%= dom_id(paper) %>" class="paper-card">
+  <h3><%= link_to paper.article.presence || "Untitled", supplier_paper_path(@supplier, paper) %></h3>
+  <p><strong>Year:</strong> <%= paper.year %></p>
+  <p><strong>Group:</strong> <%= paper.group %></p>
 
   <p>
-    <strong>Year:</strong>
-    <%= paper.year %>
+    <%= link_to "Show", supplier_paper_path(@supplier, paper), class: "button" %>
+    <%= link_to "Edit", edit_supplier_paper_path(@supplier, paper), class: "button" %>
+    <%= link_to "Delete", supplier_paper_path(@supplier, paper),
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "button button-danger" %>
   </p>
-
- <div class = "container1">
-   <div>
-    <strong>Article:</strong>
-    <%= paper.article %>
-   </div>
-
-   <div>
-    <strong>Group:</strong>
-    <%= paper.group %>
-   </div>
-
-    <div>
-     <strong>Comment:</strong>
-     <%= paper.comment %>
-    </div>
-
-  </div>
-
-
-
-  <div class="container2">
-    <div>
-    <strong>Labtest:</strong>
-    <%= paper.labtest %>
-    </div>
-
-    <div>
-      <strong>Location labtest:</strong>
-    <%= paper.location_labtest %>
-    </div>
-
-    <div>
-    <strong>Certificate:</strong>
-    <%= paper.certificate %>
-    </div>
-
-    <div>
-    <strong>Location certificate:</strong>
-    <%= paper.location_certificate %>
-    </div>
-  </div>
-
- 
- 
-  
-
 </div>

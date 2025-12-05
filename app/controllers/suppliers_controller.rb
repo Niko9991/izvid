@@ -2,11 +2,18 @@ class SuppliersController < ApplicationController
   before_action :set_supplier, only: %i[show edit update destroy]
 
   def index
-    @suppliers = current_user.suppliers
+  @suppliers = current_user.suppliers
+   if params[:search].present?
+    @suppliers = @suppliers.where("LOWER(name) LIKE ?", "%#{params[:search].downcase}%")
+
+   end
   end
 
+
   def show
+    # only papers for this supplier
   end
+
 
   def new
     @supplier = current_user.suppliers.build

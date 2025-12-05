@@ -1,0 +1,12 @@
+<% content_for :title, "Uredi Dobavitelja" %>
+
+<h1>Urejevanje dobavitelja</h1>
+
+<%= render "form", supplier: @supplier %>
+
+<br>
+ 
+<div>
+  <%= link_to "Dobavitelj", @supplier %> |
+  <%= link_to "Nazaj v seznam dobaviteljev", suppliers_path %>
+</div>

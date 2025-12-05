@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
-  get "reports/supplier_report"
-  resources :papers
-  resources :suppliers
-  resource :session
-  resources :passwords, param: :token
-  get "reports/supplier_report", to: "reports#supplier_report"
+  scope "(:locale)", locale: /en|sl/ do
+    root "home#index"
 
-  get "home/razlaga"
-  get "home/index"
-  root "home#index"
+    get "home/index"
+    get "home/razlaga"
+
+    resources :suppliers do
+      resources :papers
+    end
+
+   resource :session
+   resources :passwords, param: :token
+
+    get "reports/supplier_report", to: "reports#supplier_report"
+  end
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

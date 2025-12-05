@@ -1,10 +1,19 @@
 <h1>Supplier Report</h1>
 
-<p><strong>Total suppliers:</strong> <%= @suppliers.count %></p>
+<p><strong><%= "Total suppliers:" %></strong> <%= @suppliers.count %></p>
 
-<table border="1" style="margin-top: 1em;">
-  <tr>
-    <th>Supplier</th>
+<p><strong>Total Lab Tests:</strong> <%= @total_labtests %></p>
+<p><strong>Total Certificates:</strong> <%= @total_certificates %></p>
+
+
+<!-- CSV Download Link -->
+<p>
+  <%= link_to "Download CSV", reports_supplier_report_path(format: :csv), class: "btn btn-primary" %>
+</p>
+
+<table border="1" style="margin-top: 1em; border-collapse: collapse; width: 60%;">
+  <tr style="background: #f2f2f2;">
+    <th><%= t :Supplier %></th>
     <th>Lab Tests</th>
     <th>Certificates</th>
   </tr>
@@ -12,9 +21,18 @@
   <% @suppliers.each do |supplier| %>
     <tr>
       <td><%= supplier.name %></td>
-      <td><%= supplier.papers.where.not(labtest: [nil, ""]).count %></td>
-      <td><%= supplier.papers.where.not(certificate: [nil, ""]).count %></td>
+      <td style="text-align: center;"><%= supplier.papers.where(labtest: true).count %></td>
+      <td style="text-align: center;"><%= supplier.papers.where(certificate: true).count %></td>
     </tr>
   <% end %>
+
+  <!-- TOTAL ROW -->
+  <tr style="font-weight: bold; background: #e8f0fe;">
+    <td>Total:</td>
+    <td style="text-align: center;"><%= @total_labtests %></td>
+    <td style="text-align: center;"><%= @total_certificates %></td>
+  </tr>
 </table>
 
+
+ 

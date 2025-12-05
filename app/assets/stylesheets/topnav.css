@@ -23,3 +23,9 @@ color: #9c6d33;
 background-color: #04AA6D;
 color: white;
 }
+.topnav span {
+  margin-left: auto;
+}
+.topnav a {
+  margin-right: 10px;
+}

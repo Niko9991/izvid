@@ -1,78 +1,67 @@
 class PapersController < ApplicationController
+  before_action :set_supplier
   before_action :set_paper, only: %i[ show edit update destroy ]
-  before_action :set_supplier, only: %i[ new create show edit]
 
-  # GET /papers or /papers.json
+  # GET /suppliers/:supplier_id/papers
   def index
-    @papers = Paper.all
+    @papers = @supplier.papers
   end
 
-  # GET /papers/1 or /papers/1.json
+  # GET /suppliers/:supplier_id/papers/:id
   def show
   end
 
-  # GET /papers/new
+  # GET /suppliers/:supplier_id/papers/new
   def new
-    @supplier =Supplier.where(user: current_user)
-    @paper = Paper.new
+    @paper = @supplier.papers.build
   end
 
-  # GET /papers/1/edit
+  # GET /suppliers/:supplier_id/papers/:id/edit
   def edit
   end
 
-  # POST /papers or /papers.json
+  # POST /suppliers/:supplier_id/papers
   def create
-    @paper = Paper.new(paper_params)
-    @paper.supplier = @supplier  # <-- THIS FIXES THE ERROR
+    @paper = @supplier.papers.build(paper_params)
 
-    respond_to do |format|
-      if @paper.save
-        format.html { redirect_to @paper, notice: "Paper created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @paper.save
+      redirect_to supplier_paper_path(@supplier, @paper), notice: "Paper created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
-  # PATCH/PUT /papers/1 or /papers/1.json
+
+  # PATCH/PUT /suppliers/:supplier_id/papers/:id
   def update
-    respond_to do |format|
-      if @paper.update(paper_params)
-        format.html { redirect_to @paper, notice: "Paper was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @paper }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @paper.errors, status: :unprocessable_entity }
-      end
+    if @paper.update(paper_params)
+      redirect_to supplier_paper_path(@supplier, @paper), notice: "Paper updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /papers/1 or /papers/1.json
+  # DELETE /suppliers/:supplier_id/papers/:id
   def destroy
     @paper.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to papers_path, notice: "Paper was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
+    redirect_to supplier_papers_path(@supplier), notice: "Paper deleted."
   end
 
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_paper
-      @paper = Paper.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def paper_params
-      params.expect(paper: [ :year, :article, :group, :labtest, :location_labtest, :certificate, :location_certificate, :comment, :labtest_count, :certificate_count, :supplier_id ])
-    end
+  def set_supplier
+    @supplier = Supplier.find(params[:supplier_id])
+  end
 
-   def set_supplier
-    @supplier = Supplier.find_by(params[:supplier_id])
-   end
+  def set_paper
+    @paper = @supplier.papers.find(params[:id])
+  end
 
-   def supplier_params
-    @supplier.expect(:name)
-   end
+  def paper_params
+    params.require(:paper).permit(
+      :year, :article, :group, :labtest, :location_labtest,
+      :certificate, :location_certificate, :comment,
+      :labtest_count, :certificate_count
+    )
+  end
 end

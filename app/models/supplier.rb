@@ -5,4 +5,6 @@ class Supplier < ApplicationRecord
   def papers_for(user)
     papers.joins(:supplier).where(suppliers: { user_id: user.id })
   end
+  # in supplier.rb
+  scope :for_user, ->(user) { where(user_id: user.id) }
 end

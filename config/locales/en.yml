@@ -29,3 +29,9 @@
 
 en:
   hello: "Hello world"
+  en:
+  home: "Home"
+  razlaga: "Explanation"
+  suppliers: "Suppliers"
+  reports: "Reports"
+

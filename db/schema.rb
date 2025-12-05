@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_21_151241) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_05_055519) do
   create_table "papers", force: :cascade do |t|
     t.integer "year"
     t.string "article"
     t.integer "group"
-    t.string "labtest"
+    t.boolean "labtest", default: false
     t.string "location_labtest"
-    t.string "certificate"
+    t.boolean "certificate", default: false
     t.string "location_certificate"
     t.text "comment"
-    t.integer "labtest_count"
-    t.integer "certificate_count"
     t.integer "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,0 +1,26 @@
+ <p style="color: green"><%= notice %></p>
+
+<h2>Pregled dobavitelja</h2>
+
+<%= current_user.id %>
+<%= Supplier %>
+<%= @supplier.id %>
+ 
+
+<%= render @supplier %>
+
+<article>
+<div>
+  <%= link_to "Uredi dobavitelja", edit_supplier_path(@supplier), class: "button button2 text-sm" %> 
+  <%= link_to "Nazaj v seznam", suppliers_path, class: "button button1 text-sm" %>
+ <br>
+ <br>
+  <%= button_to "Izbrisi tega dobavitelja", @supplier, method: :delete, class: "button button3" %>
+</div>
+<br>
+<% if @supplier.papers.any? %>
+  <%= link_to "Dokumenti/izvidi", supplier_papers_path(@supplier), class: "button button4" %>
+<% else %>
+  <%= link_to "Nov dokument", new_supplier_paper_path(@supplier) %>
+<% end %>
+</article>
