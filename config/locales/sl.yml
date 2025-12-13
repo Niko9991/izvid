@@ -16,8 +16,11 @@ sl:
   Suppliers index html: Dobavitelji index html
   Name: Ime
   description: Opis
-  user: Uporabnik
+  user: uporabnik
   Welcome: Pozdravljeni
+  General report: Pregled skupni
+  Articles report: Pregled po artiklu
+
 
   actions:
      Show: Pokazi

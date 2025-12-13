@@ -1,0 +1,27 @@
+<h1>Report  Search articles</h1>
+
+<p><strong>Number of papers:</strong> <%= @papers.count %></p>
+
+<%= form_with url: reports_articles_report_path, method: :get, local: true do |f| %>
+  <%= f.label :search, "Search Article" %>
+  <%= f.text_field :search, value: params[:search] %>
+  <%= f.submit "Search" %>
+<% end %>
+
+<table class="table table-striped">
+  <tr>
+    <th>Supplier</th>
+    <th>Artile</th>
+    <th>location labtest</th>
+    <th>location certificate</th>
+  </tr>
+
+  <% @papers.each do |paper| %>
+    <tr>
+      <td><%= paper.supplier.name %></td>
+      <td><%= paper.article %></td>
+      <td><%= paper.location_labtest %></td>
+      <td><%= paper.location_certificate %></td>
+    </tr>
+  <% end %>
+</table>

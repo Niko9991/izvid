@@ -17,6 +17,18 @@ class ReportsController < ApplicationController
     end
   end
 
+  def articles_report
+   @papers = current_user.papers
+
+   if params[:search].present?
+    term = params[:search].downcase
+    @papers = @papers.where("LOWER(article) LIKE ?", "%#{term}%")
+   end
+  end
+
+
+
+
   private
 
   def set_suppliers

@@ -1,0 +1,28 @@
+<h1>Porocilo</h1>
+
+<p><strong>Stevilo izvidov/certifikatov:</strong> <%= @papers.count %></p>
+<p>Vpisi del imena artikla in klikni Najdi</p>
+
+<%= form_with url: reports_articles_report_path, method: :get, local: true do |f| %>
+  <%= f.label :search, "Iscemo artikle" %>
+  <%= f.text_field :search, value: params[:search] %>
+  <%= f.submit "Najdi" %>
+<% end %>
+
+<table class="table table-striped">
+  <tr>
+    <th>Dobavitelj</th>
+    <th>Artikel</th>
+    <th>Kje je izvid</th>
+    <th>Kje je certifikati</th>
+  </tr>
+
+  <% @papers.each do |paper| %>
+    <tr>
+      <td><%= paper.supplier.name %></td>
+      <td><%= paper.article %></td>
+      <td><%= paper.location_labtest %></td>
+      <td><%= paper.location_certificate %></td>
+    </tr>
+  <% end %>
+</table>

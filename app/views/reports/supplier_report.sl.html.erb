@@ -24,7 +24,14 @@
       <td style ="width: 25% "><%= supplier.papers.where(labtest: true).count %></td>
       <td><%= supplier.papers.where(certificate: true).count %></td>
     </tr>
+    
   <% end %>
+  <!-- TOTAL ROW -->
+  <tr>
+    <td>Total:</td>
+    <td style="text-align: center;"><%= @total_labtests %></td>
+    <td style="text-align: center;"><%= @total_certificates %></td>
+  </tr>
 </table>
 
  
