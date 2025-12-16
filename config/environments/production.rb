@@ -85,9 +85,6 @@ Rails.application.configure do
   #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
   # ]
   #
-  config.action_cable.mount_path = nil
-  config.action_cable.disable_request_forgery_protection = true
-
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
