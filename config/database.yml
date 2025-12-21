@@ -1,20 +1,16 @@
-development:
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: izvid_development
-  username: nikoo
-  password: novadb
-  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: izvid_dev
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: izvid_test
-  username: nikoo
-  password: novadb
-  host: localhost
 
 production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV["DATABASE_URL"] %>
+
